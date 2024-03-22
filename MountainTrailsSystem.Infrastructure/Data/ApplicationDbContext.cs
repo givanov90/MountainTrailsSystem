@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MountainTrailsSystem.Data
+namespace MountainTrailsSystem.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
