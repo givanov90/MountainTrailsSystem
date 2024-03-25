@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 
 namespace MountainTrailsSystem.Infrastructure.Data.Models
 {
@@ -12,7 +13,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(MountainNameMaximumLength)]
         [Comment("Mountain name")]
         public string Name { get; set; } = String.Empty;
 
