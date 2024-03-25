@@ -38,6 +38,6 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [ForeignKey(nameof(MountainId))]
         public Mountain Mountain { get; set; } = null!;
 
-        public ICollection<Trail> Trails { get; set; } = new List<Trail>();
+        public ICollection<TrailPeak> Trails { get; set; } = new List<TrailPeak>();
     }
 }
