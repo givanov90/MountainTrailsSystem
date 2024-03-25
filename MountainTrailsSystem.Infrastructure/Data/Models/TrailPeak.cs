@@ -7,18 +7,17 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
     [Comment("Connection between trail and peak entities")]
     public class TrailPeak
     {
-        [Key]
+        [Required]
         [Comment("Trail identifier")]
         public int TrailId { get; set; }
 
         [ForeignKey(nameof(TrailId))]
         public Trail Trail { get; set; } = null!;
 
-        [Key]
         [Comment("Peak identifier")]
-        public int PeakId { get; set; }
+        public int? PeakId { get; set; }
 
         [ForeignKey(nameof(PeakId))]
-        public Peak Peak { get; set; } = null!;
+        public Peak? Peak { get; set; }
     }
 }
