@@ -15,9 +15,23 @@
         public const int PeakNameMinimumLength = 3;
 
         public const int PeakDescriptionMaximumLength = 500;
-        public const int PeakDescriptionMinimumLength = 30;
+        public const int PeakDescriptionMinimumLength = 50;
 
         public const int PeakMaximumElevation = 8848;
         public const int PeakMinimumElevation = 1;
+
+        //Trail
+        public const int TrailNameMaximumLength = 100;
+        public const int TrailNameMinimumLength = 10;
+
+        public const int TrailDescriptionMaximumLength = 700;
+        public const int TrailDescriptionMinimumLength = 100;
+
+        public const int TrailMinimumElevationGain = 1;
+
+        public const double TrailMinimumDistance = 0.5;
+
+        public const int TrailRatingMaximumValue = 5;
+        public const int TrailRatingMinimumValue = 1;
     }
 }
