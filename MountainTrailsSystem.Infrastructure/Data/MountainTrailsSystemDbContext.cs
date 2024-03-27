@@ -11,6 +11,14 @@ namespace MountainTrailsSystem.Infrastructure.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new TrailPeakConfiguration());
+            builder.ApplyConfiguration(new TrailConfiguration());
+
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Mountain> Mountains { get; set; }
 
         public DbSet<Peak> Peaks { get; set; }
