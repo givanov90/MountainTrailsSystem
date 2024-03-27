@@ -33,5 +33,8 @@
 
         public const int TrailRatingMaximumValue = 5;
         public const int TrailRatingMinimumValue = 1;
+
+        public const string TrailMaximumDuration = "72:00:00";
+        public const string TrailMinimumDuration = "00:30:00";
     }
 }

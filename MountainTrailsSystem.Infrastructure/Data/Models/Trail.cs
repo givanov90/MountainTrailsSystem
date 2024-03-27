@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MountainTrailsSystem.Infrastructure.Attributes;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -38,6 +39,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         public double Distance { get; set; }
 
         [Required]
+        [DurationRange(TrailMinimumDuration, TrailMaximumDuration)]
         [Comment("Duration of the trail")]
         public TimeSpan Duration { get; set; }
 
