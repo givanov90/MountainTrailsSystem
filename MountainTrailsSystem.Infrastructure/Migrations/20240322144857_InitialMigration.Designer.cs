@@ -11,7 +11,7 @@ using MountainTrailsSystem.Infrastructure.Data;
 
 namespace MountainTrailsSystem.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(MountainTrailsSystemDbContext))]
     [Migration("20240322144857_InitialMigration")]
     partial class InitialMigration
     {

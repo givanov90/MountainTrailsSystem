@@ -10,7 +10,7 @@ using MountainTrailsSystem.Infrastructure.Data;
 
 namespace MountainTrailsSystem.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(MountainTrailsSystemDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
