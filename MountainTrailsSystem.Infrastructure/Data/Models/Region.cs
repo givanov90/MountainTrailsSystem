@@ -16,6 +16,6 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Comment("Region name")]
         public string Name { get; set; } = String.Empty;
 
-        public ICollection<Mountain> Mountains { get; set; } = new List<Mountain>();
+        public ICollection<MountainRegion> Mountains { get; set; } = new List<MountainRegion>();
     }
 }

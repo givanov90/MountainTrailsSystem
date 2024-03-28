@@ -15,6 +15,7 @@ namespace MountainTrailsSystem.Infrastructure.Data
         {
             builder.ApplyConfiguration(new TrailPeakConfiguration());
             builder.ApplyConfiguration(new TrailConfiguration());
+            builder.ApplyConfiguration(new MountainRegionConfiguration());
 
             base.OnModelCreating(builder);
         }
@@ -28,5 +29,7 @@ namespace MountainTrailsSystem.Infrastructure.Data
         public DbSet<Trail> Trails { get; set; }
 
         public DbSet<TrailPeak> TrailsPeaks { get; set; }
+
+        public DbSet<MountainRegion> MountainsRegions { get; set; }
     }
 }

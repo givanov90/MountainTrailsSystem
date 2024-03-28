@@ -17,12 +17,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Comment("Mountain name")]
         public string Name { get; set; } = String.Empty;
 
-        [Required]
-        [Comment("Region identifier")]
-        public int RegionId { get; set; }
-
-        [ForeignKey(nameof(RegionId))]
-        public Region Region { get; set; } = null!;
+        public ICollection<MountainRegion> Regions { get; set; } = new List<MountainRegion>();
 
         public ICollection<Trail> Trails { get; set; } = new List<Trail>();
 
