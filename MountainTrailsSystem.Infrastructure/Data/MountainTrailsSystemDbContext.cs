@@ -31,5 +31,7 @@ namespace MountainTrailsSystem.Infrastructure.Data
         public DbSet<TrailPeak> TrailsPeaks { get; set; }
 
         public DbSet<MountainRegion> MountainsRegions { get; set; }
+
+        public DbSet<TrailStatusNote> TrailStatusNotes { get; set; }
     }
 }

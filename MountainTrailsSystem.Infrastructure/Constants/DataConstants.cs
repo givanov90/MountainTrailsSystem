@@ -36,5 +36,9 @@
 
         public const string TrailMaximumDuration = "72:00:00";
         public const string TrailMinimumDuration = "00:30:00";
+
+        //TrailStatusNote
+        public const int TrailStatusNoteMaximumLength = 500;
+        public const int TrailStatusNoteMinimumLength = 50;
     }
 }
