@@ -15,12 +15,12 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Required]
         [MaxLength(PeakNameMaximumLength)]
         [Comment("Peak name")]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(PeakDescriptionMaximumLength)]
         [Comment("Peak description")]
-        public string Description { get; set; } = String.Empty;
+        public string Description { get; set; } = string.Empty;
 
         [Required]
         [Range(PeakMinimumElevation, PeakMaximumElevation)]
@@ -29,7 +29,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         
         [Required]
         [Comment("Image URL of the peak")]
-        public string ImageUrl { get; set; } = String.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
 
         [Required]
         [Comment("Mountain identifier")]

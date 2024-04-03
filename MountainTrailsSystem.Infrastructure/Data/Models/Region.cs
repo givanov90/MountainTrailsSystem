@@ -14,7 +14,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Required]
         [MaxLength(RegionNameMaximumLength)]
         [Comment("Region name")]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; } = string.Empty;
 
         public ICollection<MountainRegion> Mountains { get; set; } = new List<MountainRegion>();
     }

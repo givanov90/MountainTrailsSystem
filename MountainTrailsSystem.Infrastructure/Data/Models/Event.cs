@@ -14,12 +14,12 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Required]
         [MaxLength(EventTitleMaximumLength)]
         [Comment("Event title")]
-        public string Title { get; set; } = String.Empty;
+        public string Title { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(EventDescriptionMaximumLength)]
         [Comment("Event description")]
-        public string Description { get; set; } = String.Empty;
+        public string Description { get; set; } = string.Empty;
 
         [Required]
         [Comment("Date and time when the event starts")]

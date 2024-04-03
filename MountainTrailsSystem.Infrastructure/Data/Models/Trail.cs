@@ -17,16 +17,16 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Required]
         [MaxLength(TrailNameMaximumLength)]
         [Comment("Trail name")]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(TrailDescriptionMaximumLength)]
         [Comment("Trail description")]
-        public string Description { get; set; } = String.Empty;
+        public string Description { get; set; } = string.Empty;
 
         [Required]
         [Comment("Image URL of the trail")]
-        public string ImageUrl { get; set; } = String.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
 
         [Required]
         [Range(TrailMinimumElevationGain, int.MaxValue)]

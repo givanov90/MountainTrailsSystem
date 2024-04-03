@@ -15,10 +15,10 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         [Required]
         [MaxLength(TrailStatusNoteMaximumLength)]
         [Comment("Description of the updated trail status")]
-        public string Description { get; set; } = String.Empty;
+        public string Description { get; set; } = string.Empty;
 
         [Comment("Image verifying the updated trail status")]
-        public string ImageUrl { get; set; } = String.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
 
         [Comment("Flag showing if the given note is resolved")]
         public bool IsResolved { get; set; } = false;
