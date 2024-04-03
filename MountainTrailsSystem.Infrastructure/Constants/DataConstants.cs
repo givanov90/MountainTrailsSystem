@@ -40,5 +40,19 @@
         //TrailStatusNote
         public const int TrailStatusNoteMaximumLength = 500;
         public const int TrailStatusNoteMinimumLength = 50;
+
+        //Article
+        public const int ArticleTitleMaximumLength = 150;
+        public const int ArticleTitleMinimumLength = 5;
+
+        public const int ArticleContentMaximumLength = 1500;
+        public const int ArticleContentMinimumLength = 100;
+
+        //Event
+        public const int EventTitleMaximumLength = 150;
+        public const int EventTitleMinimumLength = 20;
+
+        public const int EventDescriptionMaximumLength = 700;
+        public const int EventDescriptionMinimumLength = 50;
     }
 }

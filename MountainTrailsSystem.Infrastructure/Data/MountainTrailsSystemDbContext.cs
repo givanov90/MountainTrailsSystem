@@ -4,7 +4,7 @@ using MountainTrailsSystem.Infrastructure.Data.Models;
 
 namespace MountainTrailsSystem.Infrastructure.Data
 {
-    public class MountainTrailsSystemDbContext : IdentityDbContext
+    public class MountainTrailsSystemDbContext : IdentityDbContext<ApplicationUser>
     {
         public MountainTrailsSystemDbContext(DbContextOptions<MountainTrailsSystemDbContext> options)
             : base(options)
@@ -16,6 +16,7 @@ namespace MountainTrailsSystem.Infrastructure.Data
             builder.ApplyConfiguration(new TrailPeakConfiguration());
             builder.ApplyConfiguration(new TrailConfiguration());
             builder.ApplyConfiguration(new MountainRegionConfiguration());
+            builder.ApplyConfiguration(new UserTrailConfiguration());
 
             base.OnModelCreating(builder);
         }
@@ -33,5 +34,11 @@ namespace MountainTrailsSystem.Infrastructure.Data
         public DbSet<MountainRegion> MountainsRegions { get; set; }
 
         public DbSet<TrailStatusNote> TrailStatusNotes { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<UserTrail> UsersTrails { get; set; }
     }
 }
