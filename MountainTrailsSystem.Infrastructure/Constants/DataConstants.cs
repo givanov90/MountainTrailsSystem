@@ -24,7 +24,7 @@
         public const int TrailNameMaximumLength = 100;
         public const int TrailNameMinimumLength = 10;
 
-        public const int TrailDescriptionMaximumLength = 700;
+        public const int TrailDescriptionMaximumLength = 2000;
         public const int TrailDescriptionMinimumLength = 100;
 
         public const int TrailMinimumElevationGain = 1;
