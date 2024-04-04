@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MountainTrailsSystem.Infrastructure.Data;
 using MountainTrailsSystem.Infrastructure.Data.Models;
@@ -16,6 +17,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<MountainTrailsSystemDbContext>();
 
 builder.Services.AddControllersWithViews();
@@ -42,5 +44,7 @@ app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
+
+await app.CreateAdministratorRoleAsync();
 
 app.Run();
