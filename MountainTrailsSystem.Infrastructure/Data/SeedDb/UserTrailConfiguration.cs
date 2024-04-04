@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MountainTrailsSystem.Infrastructure.Data
+namespace MountainTrailsSystem.Infrastructure.Data.SeedDb
 {
     public class UserTrailConfiguration : IEntityTypeConfiguration<UserTrail>
     {

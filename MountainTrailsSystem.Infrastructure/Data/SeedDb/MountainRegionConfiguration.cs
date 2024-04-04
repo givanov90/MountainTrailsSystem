@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MountainTrailsSystem.Infrastructure.Data.Models;
 
-namespace MountainTrailsSystem.Infrastructure.Data
+namespace MountainTrailsSystem.Infrastructure.Data.SeedDb
 {
     public class MountainRegionConfiguration : IEntityTypeConfiguration<MountainRegion>
     {
@@ -20,6 +20,20 @@ namespace MountainTrailsSystem.Infrastructure.Data
                 .WithMany(m => m.Regions)
                 .HasForeignKey(mr => mr.MountainId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            var data = new SeedData();
+
+            builder.HasData(new MountainRegion[] 
+            { 
+                data.RilaSofia,
+                data.RilaBlagoevgrad,
+                data.RilaKyustendil,
+                data.RodopiPazardjik,
+                data.RodopiSmolyan,
+                data.RodopiKardzhali,
+                data.PirinBlagoevgrad,
+                data.VitoshaSofia
+            });
         }
     }
 }
