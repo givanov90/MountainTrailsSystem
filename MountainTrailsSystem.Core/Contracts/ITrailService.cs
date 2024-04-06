@@ -6,6 +6,6 @@ namespace MountainTrailsSystem.Core.Contracts
     {
         Task<IEnumerable<TrailOverviewServiceModel>> LastThreeTrailsAsync();
 
-        Task<TrailQueryServiceModel> AllTrailsAsync(int currentPage, int trailsPerPage);
+        Task<TrailQueryServiceModel> AllTrailsAsync(int currentPage);
     }
 }

@@ -15,13 +15,13 @@ namespace MountainTrailsSystem.Core.Services
             data = _data;
         }
 
-        public async Task<TrailQueryServiceModel> AllTrailsAsync(int currentPage = 1, int trailsPerPage = 1)
+        public async Task<TrailQueryServiceModel> AllTrailsAsync(int currentPage = 1)
         {
             var trailsQuery = data.Trails.AsQueryable();
 
             var trails = await trailsQuery
-                .Skip((currentPage - 1) * trailsPerPage)
-                .Take(trailsPerPage)
+                .Skip((currentPage - 1) * 3)
+                .Take(3)
                 .Select(t => new TrailOverviewServiceModel
                 {
                     TrailId = t.TrailId,

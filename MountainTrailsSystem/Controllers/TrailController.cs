@@ -18,9 +18,7 @@ namespace MountainTrailsSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllTrailsQueryModel model)
         {
-            var trails = await trailService.AllTrailsAsync(
-                model.TrailsPerPage,
-                model.CurrentPage);
+            var trails = await trailService.AllTrailsAsync(model.CurrentPage);
 
             model.TotalTrails = trails.TotalTrails;
             model.Trails = trails.Trails;
