@@ -25,5 +25,18 @@ namespace MountainTrailsSystem.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            if (!await trailService.TrailExistsAsync(id))
+            {
+                return BadRequest();
+            }
+
+            var model = await trailService.TrailDetailsByIdAsync(id);
+
+            return View(model);
+        }
     }
 }

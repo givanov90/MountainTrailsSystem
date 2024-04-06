@@ -57,5 +57,32 @@ namespace MountainTrailsSystem.Core.Services
                 })
                 .ToListAsync();
         }
+
+        public async Task<TrailDetailsViewModel> TrailDetailsByIdAsync(int id)
+        {
+            return await data.Trails
+                .Where(t => t.TrailId == id)
+                .Select(t => new TrailDetailsViewModel()
+                {
+                    TrailId = t.TrailId,
+                    Name = t.Name,
+                    Description = t.Description,
+                    ImageUrl = t.ImageUrl,
+                    DifficultyLevel = t.DifficultyLevel,
+                    Distance = t.Distance,
+                    Duration = t.Duration,
+                    ElevationGain = t.ElevationGain,
+                    LastUpdated = t.LastUpdated,
+                    Mountain = t.Mountain.Name,
+                    Region = t.Region.Name
+                })
+                .FirstAsync();
+        }
+
+        public async Task<bool> TrailExistsAsync(int id)
+        {
+            return await data.Trails
+                .AnyAsync(t => t.TrailId == id);
+        }
     }
 }

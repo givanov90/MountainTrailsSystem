@@ -1,0 +1,51 @@
+﻿@using MountainTrailsSystem.Core.Models
+@model TrailDetailsViewModel
+
+@{
+    ViewBag.Title = $"{@Model.Name}";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 30rem;"
+                 src="@Model.ImageUrl" alt="House Image">
+            <p style="margin-top: 40px;">Region: <b>@Model.Region</b></p>
+            <p>Mountain: <b>@Model.Mountain</b></p>
+            <p>Difficulty level: <b>@Model.DifficultyLevel</b></p>
+            <p>Distance: <b>@Model.Distance km</b></p>
+            <p>Duration: <b>~ @Model.Duration.Hours @(Model.Duration.Hours > 1 ? "hours" : "hour") @(Model.Duration.Minutes > 0 ? $"{Model.Duration.Minutes} minutes" : "")</b></p>
+            <p>Elevation gain: <b>@Model.ElevationGain m</b></p>
+        </div>
+        <div class="card col-8 border-0">
+            <p style="margin-left: 30px;">@Model.Description</p>
+            <div class="form-inline">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div style="margin-top: 20px" class="text-center">
+                    <a class="btn alert-success" asp-controller="Trail" asp-action="Saved"
+                       asp-route-id="@Model.TrailId">Save trail 💾</a>
+                    <a class="ml-2 btn alert-success" asp-controller="Trail" asp-action="Visited"
+                       asp-route-id="@Model.TrailId">Add to visited ✔</a>
+                       </div>
+@*                    @if (!Model.IsRented)
+                    {
+                        <form class="ml-2" asp-controller="House"
+                              asp-action="Rent" asp-route-id="@Model.Id" method="post">
+                            <input class="btn btn-primary" type="submit" value="Rent" />
+                        </form>
+                    }
+                    else
+                    {
+                        <form class="ml-2" asp-controller="House" asp-action="Leave"
+                              asp-route-id="@Model.Id" method="post">
+                            <input class="btn btn-primary" type="submit" value="Leave" />
+                        </form>
+                    }*@
+                }
+        </div>
+    </div>
+</div>

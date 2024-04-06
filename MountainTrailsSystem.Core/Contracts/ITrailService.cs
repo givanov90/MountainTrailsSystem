@@ -7,5 +7,9 @@ namespace MountainTrailsSystem.Core.Contracts
         Task<IEnumerable<TrailOverviewServiceModel>> LastThreeTrailsAsync();
 
         Task<TrailQueryServiceModel> AllTrailsAsync(int currentPage);
+
+        Task<bool> TrailExistsAsync(int id);
+
+        Task<TrailDetailsViewModel> TrailDetailsByIdAsync(int id);
     }
 }
