@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MountainTrailsSystem.Core.Contracts;
+using MountainTrailsSystem.Core.Services;
 using MountainTrailsSystem.Infrastructure.Data;
 using MountainTrailsSystem.Infrastructure.Data.Models;
 
@@ -21,6 +23,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<MountainTrailsSystemDbContext>();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ITrailService, TrailService>();
 
 var app = builder.Build();
 

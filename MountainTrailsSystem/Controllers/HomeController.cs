@@ -1,14 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Models;
 using System.Diagnostics;
 
 namespace MountainTrailsSystem.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public IActionResult Index()
+        private readonly ITrailService trailService;
+
+        public HomeController(ITrailService _trailService)
         {
-            return View();
+            trailService = _trailService;
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
+        {
+            var model = await trailService.LastThreeTrailsAsync();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
