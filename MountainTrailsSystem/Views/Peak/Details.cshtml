@@ -1,0 +1,25 @@
+﻿@using MountainTrailsSystem.Core.Models
+@model PeakDetailsViewModel
+
+@{
+    ViewBag.Title = $"{@Model.Name}";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 30rem;"
+                 src="@Model.ImageUrl" alt="House Image">
+            <p style="margin-top: 40px;">Elevation: <b>@Model.Elevation m</b></p>
+            <p>Mountain: <b>@Model.Mountain</b></p>
+            <p>See all trails: <a asp-area="" asp-controller="Peak" asp-action="AllTrails" asp-route-id="@Model.PeakId"
+               asp-route-information="" class="btn btn-success">Trails</a></p>
+        </div>
+        <div class="card col-8 border-0">
+            <p style="margin-left: 30px;">@Model.Description</p>
+    </div>
+</div>
+</div>

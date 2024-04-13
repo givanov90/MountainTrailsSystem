@@ -1,0 +1,57 @@
+﻿@using MountainTrailsSystem.Core.Enumerations
+@using MountainTrailsSystem.Core.Models
+@model IEnumerable<TrailByPeakServiceModel>
+
+<hr />
+
+<form asp-action="AllTrails" asp-controller="Peak" method="get">
+    <div class="form-group">
+        <label for="sortCriteria">Sort by:</label>
+        <div class="dropdown-wrapper">
+        <select class="form-control" id="sortCriteria" name="sortCriteria">
+            <option value="">Sort by</option>
+            <option value="@TrailSortCriteria.DifficultyLevelAscending">Difficulty Level (ascending)</option>
+            <option value="@TrailSortCriteria.DifficultyLevelDescending">Difficulty Level (descending)</option>
+            <option value="@TrailSortCriteria.DurationAscending">Duration (ascending)</option>
+            <option value="@TrailSortCriteria.DurationDescending">Duration (descending)</option>
+            <option value="@TrailSortCriteria.DistanceAscending">Distance (ascending)</option>
+            <option value="@TrailSortCriteria.DistanceDescending">Distance (descending)</option>
+            <option value="@TrailSortCriteria.ElevationGainAscending">Elevation Gain (ascending)</option>
+            <option value="@TrailSortCriteria.ElevationGainDescending">Elevation Gain (descending)</option>
+        </select>
+        <div class="pointer"></div>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Trail Name</th>
+            <th>Difficulty Level</th>
+            <th>Duration</th>
+            <th>Distance</th>
+            <th>Elevation Gain</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trail in Model)
+        {
+            <tr>
+                <td>@trail.Name</td>
+                <td>@trail.DifficultyLevel</td>
+                <td>~ @trail.Duration.Hours @(trail.Duration.Hours > 1 ? "hours" : "hour") @(trail.Duration.Minutes > 0 ? $"{trail.Duration.Minutes} minutes" : "")</td>
+                <td>@trail.Distance.ToString("0.###") km</td>
+                <td>@trail.ElevationGain m</td>
+                <td><a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@trail.TrailId"
+               asp-route-information="" class="btn btn-success">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/trailSorting.js"></script>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
