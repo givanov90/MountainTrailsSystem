@@ -6,9 +6,9 @@
 
 <form asp-action="Found" asp-controller="Peak" method="get">
     <div class="form-group">
-        <label asp-for=@Model.Search>Search by a keyword:</label>
-        <input asp-for="@Model.Search" class="form-control" placeholder="Search..." value="@Model.Search" />
-        <span asp-validation-for="@Model.Search" class="small text-danger"></span>
+        <label asp-for=@Model.Condition>Search by a keyword:</label>
+        <input asp-for="@Model.Condition" class="form-control" placeholder="Search..." value="@Model.Condition" />
+        <span asp-validation-for="@Model.Condition" class="small text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Search</button>
 </form>

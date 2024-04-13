@@ -8,6 +8,6 @@ namespace MountainTrailsSystem.Core.Models
     {
         [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(PeakSearchConditionMaximumLength, MinimumLength = PeakSearchConditionMinimumLength, ErrorMessage = FieldLengthErrorMessage)]
-        public string Search { get; set; } = string.Empty;
+        public string Condition { get; set; } = string.Empty;
     }
 }
