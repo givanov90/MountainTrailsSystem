@@ -1,11 +1,26 @@
-﻿@using MountainTrailsSystem.Core.Models
+﻿@using MountainTrailsSystem.Core.Contracts
+@using MountainTrailsSystem.Core.Models
 @model IEnumerable<TrailOverviewServiceModel>
+@inject IStatusNoteService statusNoteService;
 
-@{
-    ViewBag.Title = "Home Page";
+@if (User.IsInRole("Administrator") && await statusNoteService.IsStatusNotesNotResolvedAsync())
+{
+        ViewBag.Title = $"You have {await statusNoteService.GetNotResolvedStatusNotesCountAsync()} new status note(s) to be reviewed";
+
+        <h2 class="text-center alert-danger">@ViewBag.Title</h2>
+        <div class="text-center">
+        <a asp-area="Admin" asp-controller="StatusNote" asp-action="All" asp-route-id=""
+               asp-route-information="" class="btn alert-dark">Review</a>
+        </div>
 }
+    
+else if (User.IsInRole("Administrator") && !await statusNoteService.IsStatusNotesNotResolvedAsync())
+{
+        {
+        ViewBag.Title = "You do not have new status notes for review";
+        }
 
-<h2 class="text-center">@ViewBag.Title</h2>
+        <h2 class="text-center alert-success">@ViewBag.Title</h2>
 <hr />
 
 <div class="row">
@@ -25,4 +40,33 @@
     </div>
 </div>
     }
+</div>     
+}
+else
+{
+    {
+    ViewBag.Title = "Home Page";
+    }
+
+<h2 class="text-center">🏕️</h2>
+<hr />
+
+<div class="row">
+    @foreach (var trail in Model)
+    {
+        <div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@trail.ImageUrl" alt="Trail Image">
+        <div class="card-body text-center">
+            <h4>@trail.Name</h4>
+            <h6>Distance: <b>@trail.Distance</b> km</h6>
+            <h6>Difficulty level: <b>@trail.DifficultyLevel</b></h6>
+            <br />
+            <a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@trail.TrailId"
+               asp-route-information="" class="btn btn-success">Details</a>
+        </div>
+    </div>
 </div>
+    }
+</div>     
+}
