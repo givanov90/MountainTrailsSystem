@@ -1,0 +1,66 @@
+﻿@using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Infrastructure.Enumerations
+@model TrailUpdateFormModel
+@{
+    ViewBag.Title = $"Update {@Model.Name} trail";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-controller="Trail" asp-area="Admin" asp-action="Update" method="post">
+            <div class="mb-3">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Name" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description">Description</label>
+                <textarea asp-for="@Model.Description" rows="4" class="form-control" placeholder="Description..."></textarea>
+                <span asp-validation-for="@Model.Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ImageUrl">Image URL</label>
+                <input asp-for="@Model.ImageUrl" class="form-control" placeholder="Image URL..."/>
+                <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ElevationGain">Elevation gain</label>
+                <input asp-for="@Model.ElevationGain" class="form-control" placeholder="Elevation gain..."/>
+                <span asp-validation-for="@Model.ElevationGain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Distance">Distance</label>
+                <input asp-for="@Model.Distance" class="form-control" placeholder="Distance..."/>
+                <span asp-validation-for="@Model.Distance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Duration">Duration</label>
+                <input asp-for="@Model.Duration" class="form-control" placeholder="Duration..."/>
+                <span asp-validation-for="@Model.Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.DifficultyLevel"></label>
+                <select asp-for="@Model.DifficultyLevel" class="form-control">
+                        <option value="@DifficultyLevel.Easy">@DifficultyLevel.Easy</option>
+                        <option value="@DifficultyLevel.Moderate">@DifficultyLevel.Moderate</option>
+                        <option value="@DifficultyLevel.Intermediate">@DifficultyLevel.Intermediate</option>
+                        <option value="@DifficultyLevel.Difficult">@DifficultyLevel.Difficult</option>
+                        <option value="@DifficultyLevel.VeryDifficult">@DifficultyLevel.VeryDifficult</option>
+                        <option value="@DifficultyLevel.Extreme">@DifficultyLevel.Extreme</option>
+                </select>
+                <span asp-validation-for="@Model.DifficultyLevel" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

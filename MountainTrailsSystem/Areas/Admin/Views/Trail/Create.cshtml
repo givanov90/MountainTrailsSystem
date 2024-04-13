@@ -1,0 +1,106 @@
+﻿@using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Infrastructure.Enumerations
+@model CreateTrailFormModel
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Name"></label>
+                <input asp-for="@Model.Name" class="form-control" placeholder="Trail name...">
+                <span asp-validation-for="@Model.Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description"></label>
+                <textarea asp-for="@Model.Description" class="form-control" placeholder="Trail description..."></textarea>
+                <span asp-validation-for="@Model.Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ImageUrl"></label>
+                <input asp-for="@Model.ImageUrl" class="form-control" placeholder="Image URL...">
+                <span asp-validation-for="@Model.ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ElevationGain"></label>
+                <input asp-for="@Model.ElevationGain" class="form-control" placeholder="Elevation gain...">
+                <span asp-validation-for="@Model.ElevationGain" class="small text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" style="margin-top: 20px">Duration:</label>
+                <div class="col-sm-4"  style="margin-top: 20px">
+                    <input id="durationHoursInput" asp-for="@Model.DurationHours" class="form-control" type="number" placeholder="Hours" min="1" max="23">
+                    <span asp-validation-for="@Model.DurationHours" class="small text-danger"></span>
+                </div>
+                <span class="col-sm-1 col-form-label text-center" style="margin-top: 20px">:</span>
+                <div class="col-sm-4" style="margin-top: 20px">
+                    <input id="durationMinutesInput" asp-for="@Model.DurationMinutes" class="form-control" type="number" placeholder="Minutes" min="0" max="59">
+                    <span asp-validation-for="@Model.DurationMinutes" class="small text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Distance"></label>
+                <input asp-for="@Model.Distance" class="form-control" placeholder="Trail distance...">
+                <span asp-validation-for="@Model.Distance" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.DifficultyLevel"></label>
+                <div class="dropdown-wrapper">
+                <select asp-for="@Model.DifficultyLevel" class="form-control">
+                        <option value="">Select Difficulty Level</option>
+                        <option value="@DifficultyLevel.Easy">@DifficultyLevel.Easy</option>
+                        <option value="@DifficultyLevel.Moderate">@DifficultyLevel.Moderate</option>
+                        <option value="@DifficultyLevel.Intermediate">@DifficultyLevel.Intermediate</option>
+                        <option value="@DifficultyLevel.Difficult">@DifficultyLevel.Difficult</option>
+                        <option value="@DifficultyLevel.VeryDifficult">@DifficultyLevel.VeryDifficult</option>
+                        <option value="@DifficultyLevel.Extreme">@DifficultyLevel.Extreme</option>
+                </select>
+                <div class="pointer"></div>
+                </div>
+                <span asp-validation-for="@Model.DifficultyLevel" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MountainId"></label>
+                <div class="dropdown-wrapper">
+                <select asp-for="MountainId" class="form-control">
+                    <option value="">Select Mountain</option>
+                    @foreach (var mountain in Model.Mountains)
+                    {
+                        <option value="@mountain.MountainId">@mountain.Name</option>
+                    }
+                </select>
+                <div class="pointer"></div>
+                </div>
+                <span asp-validation-for="MountainId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegionId"></label>
+                <div class="dropdown-wrapper">
+                <select asp-for="RegionId" class="form-control">
+                <option value="">Select Region</option>
+                    @foreach (var region in Model.Regions)
+                    {
+                        <option value="@region.RegionId">@region.Name</option>
+                    }
+                </select>
+                <div class="pointer"></div>
+                </div>
+                <span asp-validation-for="RegionId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedPeaksIds">Peak(s)</label>
+                <select asp-for="SelectedPeaksIds" asp-items="@Model.Peaks.Select(p => new SelectListItem(p.Name, p.PeakId.ToString()))" class="form-control" multiple aria-expanded="false"></select>
+                <span asp-validation-for="SelectedPeaksIds" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Create" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+
+<script src="~/js/durationInput.js"></script>
