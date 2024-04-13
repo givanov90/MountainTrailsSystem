@@ -1,5 +1,16 @@
-﻿@using MountainTrailsSystem.Core.Models
+﻿@using MountainTrailsSystem.Core.Contracts
+@using MountainTrailsSystem.Core.Models
+@using Microsoft.AspNetCore.Identity
+@using MountainTrailsSystem.Infrastructure.Data.Models
+@using System.Security.Claims
 @model TrailDetailsViewModel
+@inject ITrailService trailService
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    string userId = userManager.GetUserId(User);
+}
+
 
 @{
     ViewBag.Title = $"{@Model.Name}";
@@ -16,36 +27,54 @@
             <p style="margin-top: 40px;">Region: <b>@Model.Region</b></p>
             <p>Mountain: <b>@Model.Mountain</b></p>
             <p>Difficulty level: <b>@Model.DifficultyLevel</b></p>
-            <p>Distance: <b>@Model.Distance km</b></p>
+            <p>Distance: <b>@Model.Distance.ToString("0.###") km</b></p>
             <p>Duration: <b>~ @Model.Duration.Hours @(Model.Duration.Hours > 1 ? "hours" : "hour") @(Model.Duration.Minutes > 0 ? $"{Model.Duration.Minutes} minutes" : "")</b></p>
             <p>Elevation gain: <b>@Model.ElevationGain m</b></p>
+            <p>Last updated on: <b>@Model.LastUpdated.ToShortDateString()</b></p>
         </div>
         <div class="card col-8 border-0">
             <p style="margin-left: 30px;">@Model.Description</p>
             <div class="form-inline">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div style="margin-top: 20px" class="text-center">
-                    <a class="btn alert-success" asp-controller="Trail" asp-action="Saved"
-                       asp-route-id="@Model.TrailId">Save trail 💾</a>
-                    <a class="ml-2 btn alert-success" asp-controller="Trail" asp-action="Visited"
-                       asp-route-id="@Model.TrailId">Add to visited ✔</a>
-                       </div>
-@*                    @if (!Model.IsRented)
+                    if (await trailService.IsTrailSavedByUserAsync(userId, Model.TrailId))
                     {
-                        <form class="ml-2" asp-controller="House"
-                              asp-action="Rent" asp-route-id="@Model.Id" method="post">
-                            <input class="btn btn-primary" type="submit" value="Rent" />
-                        </form>
+                    <div style="margin-top: 20px" class="text-center">
+                    <form asp-controller="Trail" asp-action="Unsave" method="post">
+                    <input type="hidden" name="id" value="@Model.TrailId" />
+                    <button type="submit" class="btn alert-danger">Unsave trail 🗑️</button>
+                    </form>
+                    </div>
                     }
                     else
                     {
-                        <form class="ml-2" asp-controller="House" asp-action="Leave"
-                              asp-route-id="@Model.Id" method="post">
-                            <input class="btn btn-primary" type="submit" value="Leave" />
-                        </form>
-                    }*@
+                    <div style="margin-top: 20px" class="text-center">
+                    <form asp-controller="Trail" asp-action="Save" method="post">
+                    <input type="hidden" name="id" value="@Model.TrailId" />
+                    <button type="submit" class="btn alert-success">Save trail 💾</button>
+                    </form>
+                    </div>
+                    }
+                    if (!await trailService.IsTrailVisitedByUserAsync(userId, Model.TrailId))
+                    {
+                    <div style="margin-top: 20px" class="text-center">
+                    <form asp-controller="Trail" asp-action="Visit" method="post">
+                    <input type="hidden" name="id" value="@Model.TrailId" />
+                    <button type="submit" class="btn alert-success">Add to visited ✔</button>
+                    </form>
+                    </div>
+                    }
+                    if (User.IsInRole("Administrator"))
+                    {
+                    <div style="margin-top: 20px" class="text-center">
+                    <a class="ml-2 btn alert-success" asp-area="Admin" asp-controller="Trail" asp-action="Update"
+                       asp-route-id="@Model.TrailId">Update</a>
+                    </div>
+                    }
+
+
                 }
         </div>
     </div>
+</div>
 </div>

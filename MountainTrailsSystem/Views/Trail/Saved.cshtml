@@ -1,0 +1,28 @@
+﻿@using MountainTrailsSystem.Core.Models
+@model IEnumerable<TrailOverviewServiceModel>
+
+@{
+    ViewBag.Title = "My saved trails";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    @foreach (var trail in Model)
+    {
+        <div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@trail.ImageUrl" alt="Trail Image">
+        <div class="card-body text-center">
+            <h4>@trail.Name</h4>
+            <h6>Distance: <b>@trail.Distance</b> km</h6>
+            <h6>Difficulty level: <b>@trail.DifficultyLevel</b></h6>
+            <br />
+            <a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@trail.TrailId"
+               asp-route-information="" class="btn btn-success">Details</a>
+        </div>
+    </div>
+</div>
+    }
+</div>
