@@ -1,0 +1,33 @@
+﻿@using MountainTrailsSystem.Core.Models
+@model StatusNoteDetailsViewModel
+
+@{
+    ViewBag.Title = $"{Model.Title} reported for {Model.Trail} trail";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 30rem;"
+                 src="@Model.ImageUrl" alt="Issue Image">
+        </div>
+        <div class="card col-8 border-0">
+            <p style="margin-left: 30px;">@Model.Description</p>
+            <div style="margin-top: 20px" class="text-center">
+            <form asp-area="Admin" asp-controller="StatusNote" asp-action="ResolveUpdate" method="post">
+            <input type="hidden" name="id" value="@Model.TrailStatusNoteId" />
+            <button type="submit" class="btn btn-success">Resolve note and update trail</button>
+            </form>
+            </div>
+            <div style="margin-top: 20px" class="text-center">
+            <form asp-area="Admin" asp-controller="StatusNote" asp-action="Resolve" method="post">
+            <input type="hidden" name="id" value="@Model.TrailStatusNoteId" />
+            <button type="submit" class="btn btn-success">Resolve note without updating the trail</button>
+            </form>
+            </div>
+    </div>
+</div>
+</div>
