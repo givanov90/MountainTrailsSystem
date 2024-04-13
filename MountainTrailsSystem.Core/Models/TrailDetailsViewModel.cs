@@ -25,6 +25,6 @@ namespace MountainTrailsSystem.Core.Models
 
         public string Mountain { get; set; } = string.Empty;
 
-        public string Region { get; set; } = String.Empty;
+        public string Region { get; set; } = string.Empty;
     }
 }
