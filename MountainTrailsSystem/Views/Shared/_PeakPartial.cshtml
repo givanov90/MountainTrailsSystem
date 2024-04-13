@@ -1,15 +1,15 @@
 ﻿@using MountainTrailsSystem.Core.Models
-@model TrailOverviewServiceModel
+@model PeakOverviewServiceModel
 
 <div class="col-md-4">
     <div class="card mb-3">
         <img class="card-img-top" src="@Model.ImageUrl" alt="Trail Image">
         <div class="card-body text-center">
             <h4>@Model.Name</h4>
-            <h6>Distance: <b>@Model.Distance.ToString("0.###")</b> km</h6>
-            <h6>Difficulty level: <b>@Model.DifficultyLevel</b></h6>
+            <h6>Elevation: <b>@Model.Elevation</b> m</h6>
+            <h6>Mountain: <b>@Model.Mountain</b></h6>
             <br />
-            <a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@Model.TrailId"
+            <a asp-area="" asp-controller="Peak" asp-action="Details" asp-route-id="@Model.PeakId"
                asp-route-information="" class="btn btn-success">Details</a>
         </div>
     </div>

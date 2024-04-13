@@ -13,16 +13,58 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MountainTrailsSystem</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">🏕️</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trail" asp-action="All">Trails</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Trails</a>
+                            <div class="dropdown-menu"> 
+                                <a class="dropdown-item" asp-area="" asp-controller="Trail" asp-action="All">All</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Trail" asp-action="Find">Find</a>  
+                            </div> 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Peaks</a>
+                            <div class="dropdown-menu"> 
+                                <a class="dropdown-item" asp-area="" asp-controller="Peak" asp-action="All">All</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Peak" asp-action="Find">Find</a>  
+                            </div>    
                         </li>
+                        @if (this.User?.Identity?.IsAuthenticated ?? false)
+                            {
+                                <ul class="nav justify-content-end">
+                        <li class="nav-item dropdown flex-grow-1">
+                            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My trails</a>
+                            <div class="dropdown-menu dropdown-menu-end"> 
+                                <a class="dropdown-item" asp-area="" asp-controller="Trail" asp-action="Saved">Saved</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Trail" asp-action="Visited">Visited</a>  
+                            </div>    
+                        </li>
+                                </ul>
+                        @if (User.IsInRole("Administrator"))
+                                {
+                            <li class="nav-item dropdown flex-grow-1">
+                            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Create</a>
+                            <div class="dropdown-menu"> 
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Region" asp-action="Create">Region</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Mountain" asp-action="Create">Mountain</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Peak" asp-action="Create">Peak</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Trail" asp-action="Create">Trail</a> 
+                            </div>    
+                        </li>
+
+                                }
+                        @if (!User.IsInRole("Administrator"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-danger" asp-area="" asp-controller="StatusNote" asp-action="Report">Report an issue</a>
+                                    </li>
+                                }
+                            
+                            }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
