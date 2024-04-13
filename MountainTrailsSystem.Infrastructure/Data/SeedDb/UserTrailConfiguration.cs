@@ -16,7 +16,7 @@ namespace MountainTrailsSystem.Infrastructure.Data.SeedDb
             builder.HasKey(ut => new { ut.UserId, ut.TrailId });
 
             builder.HasOne(ut => ut.User)
-                .WithMany(u => u.SavedTrails)
+                .WithMany(u => u.SavedVisitedTrails)
                 .HasForeignKey(ut => ut.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 

@@ -40,10 +40,6 @@ namespace MountainTrailsSystem.Infrastructure.Data
 
         public DbSet<TrailStatusNote> TrailStatusNotes { get; set; }
 
-        public DbSet<Article> Articles { get; set; }
-
-        public DbSet<Event> Events { get; set; }
-
         public DbSet<UserTrail> UsersTrails { get; set; }
     }
 }

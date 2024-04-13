@@ -22,6 +22,10 @@ namespace MountainTrailsSystem.Infrastructure.Attributes
                     return new ValidationResult($"The duration must be between {minDuration} and {maxDuration}.");
                 }
             }
+            else
+            {
+                return new ValidationResult("The duration field should be in format 'hh:mm:ss'");
+            }
 
             return ValidationResult.Success;
         }

@@ -20,5 +20,11 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
 
         [ForeignKey(nameof(TrailId))]
         public Trail Trail { get; set; } = null!;
+
+        [Comment("Is trail saved by user")]
+        public bool IsSaved { get; set; }
+
+        [Comment("Is trail visited by user")]
+        public bool IsVisited { get; set; }
     }
 }

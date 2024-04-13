@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MountainTrailsSystem.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using MountainTrailsSystem.Infrastructure.Data;
 namespace MountainTrailsSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(MountainTrailsSystemDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240409214230_UserTrailUpdated")]
+    partial class UserTrailUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,18 +230,96 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         {
                             Id = "ed3483b5-6152-4b74-a0fe-00fc4a0a77a0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f4b7152d-b19c-4b1d-bb2c-a67538cb63ba",
+                            ConcurrencyStamp = "ec8bf2f0-9352-4884-806a-6eb4d170d5dd",
                             Email = "admin@mts.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MTS.COM",
                             NormalizedUserName = "ADMIN@MTS.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKY/e//lSqpy8FPANf02zydkfOgCemPYgzTCRZh/hkg5NywjWU8LEetEJbM1p75Kcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKhbL4gwZ4zz3YoIiQ5yuVFgR5JfBvJPqVSQbHZBWAgNvr2Cd0QyH1KI3rSOrX8aWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b27be2c-8638-4634-90a6-245c7c46cc9f",
+                            SecurityStamp = "bbc0b20b-7579-46e1-81af-4443ad03f924",
                             TwoFactorEnabled = false,
                             UserName = "admin@mts.com"
                         });
+                });
+
+            modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.Article", b =>
+                {
+                    b.Property<int>("ArticleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Article identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleId"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)")
+                        .HasComment("Article description");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Image URL of the article");
+
+                    b.Property<DateTime>("PublishedOn")
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the article is published");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasComment("Article title");
+
+                    b.HasKey("ArticleId");
+
+                    b.ToTable("Articles");
+
+                    b.HasComment("News article entity");
+                });
+
+            modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.Event", b =>
+                {
+                    b.Property<int>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Event identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(700)
+                        .HasColumnType("nvarchar(700)")
+                        .HasComment("Event description");
+
+                    b.Property<DateTime>("End")
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the event ends");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the event starts");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasComment("Event title");
+
+                    b.HasKey("EventId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Events");
+
+                    b.HasComment("Event entity");
                 });
 
             modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.Mountain", b =>
@@ -818,12 +898,6 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasComment("Flag showing if the given note is resolved");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Title of the trail status note");
-
                     b.Property<int>("TrailId")
                         .HasColumnType("int")
                         .HasComment("Trail identifier");
@@ -847,6 +921,9 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasComment("Trail identifier");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsSaved")
                         .HasColumnType("bit")
                         .HasComment("Is trail saved by user");
@@ -856,6 +933,8 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         .HasComment("Is trail visited by user");
 
                     b.HasKey("UserId", "TrailId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("TrailId");
 
@@ -913,6 +992,13 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.Event", b =>
+                {
+                    b.HasOne("MountainTrailsSystem.Infrastructure.Data.Models.ApplicationUser", null)
+                        .WithMany("EventsToAttend")
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.MountainRegion", b =>
@@ -996,6 +1082,10 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.UserTrail", b =>
                 {
+                    b.HasOne("MountainTrailsSystem.Infrastructure.Data.Models.ApplicationUser", null)
+                        .WithMany("VisitedTrails")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("MountainTrailsSystem.Infrastructure.Data.Models.Trail", "Trail")
                         .WithMany()
                         .HasForeignKey("TrailId")
@@ -1003,7 +1093,7 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("MountainTrailsSystem.Infrastructure.Data.Models.ApplicationUser", "User")
-                        .WithMany("SavedVisitedTrails")
+                        .WithMany("SavedTrails")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1015,7 +1105,11 @@ namespace MountainTrailsSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("SavedVisitedTrails");
+                    b.Navigation("EventsToAttend");
+
+                    b.Navigation("SavedTrails");
+
+                    b.Navigation("VisitedTrails");
                 });
 
             modelBuilder.Entity("MountainTrailsSystem.Infrastructure.Data.Models.Mountain", b =>

@@ -13,6 +13,11 @@ namespace MountainTrailsSystem.Infrastructure.Data.Models
         public int TrailStatusNoteId { get; set; }
 
         [Required]
+        [MaxLength(TrailStatusNoteTitleMaximumLength)]
+        [Comment("Title of the trail status note")]
+        public string Title { get; set; } = string.Empty;
+
+        [Required]
         [MaxLength(TrailStatusNoteMaximumLength)]
         [Comment("Description of the updated trail status")]
         public string Description { get; set; } = string.Empty;
