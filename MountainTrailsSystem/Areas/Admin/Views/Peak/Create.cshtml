@@ -1,0 +1,47 @@
+﻿@using MountainTrailsSystem.Core.Models
+@model CreatePeakFormModel
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Name"></label>
+                <input asp-for="@Model.Name" class="form-control" placeholder="Peak name...">
+                <span asp-validation-summary asp-validation-for="@Model.Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description"></label>
+                <textarea asp-for="@Model.Description" class="form-control" placeholder="Peak description..."></textarea>
+                <span asp-validation-summary asp-validation-for="@Model.Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Elevation"></label>
+                <input asp-for="@Model.Elevation" class="form-control" placeholder="Peak elevation...">
+                <span asp-validation-summary asp-validation-for="@Model.Elevation" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ImageUrl"></label>
+                <input asp-for="@Model.ImageUrl" class="form-control" placeholder="Peak image URL...">
+                <span asp-validation-summary asp-validation-for="@Model.ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MountainId">Mountain</label>
+                <div class="dropdown-wrapper">
+                <select asp-for="MountainId" asp-items="@Model.Mountains.Select(m => new SelectListItem(m.Name, m.MountainId.ToString()))" class="form-control">
+                <option value="">Select Mountain</option>
+                </select>
+            <div class="pointer"></div>
+            </div>
+                <span asp-validation-summary asp-validation-for="MountainId" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Create" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
