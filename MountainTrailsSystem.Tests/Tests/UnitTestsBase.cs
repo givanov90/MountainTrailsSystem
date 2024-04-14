@@ -168,6 +168,8 @@ namespace MountainTrailsSystem.Tests.Tests
             data.TrailsPeaks.Add(AlekoHutCherniVrahTrailPeak);
             data.TrailsPeaks.Add(ZheleznitsaCherniVrahTrailPeak);
             data.TrailsPeaks.Add(ZlatniteMostoveCherniVrahTrailPeak);
+
+            data.SaveChanges();
         }
 
         private DateTime seedDate = new DateTime(2024, 4, 1);
