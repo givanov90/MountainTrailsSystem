@@ -1,6 +1,4 @@
-﻿@using MountainTrailsSystem.Core.Contracts
-@using MountainTrailsSystem.Core.Models.StatusNote
-@model IEnumerable<TrailStatusNoteOverviewServiceModel>
+﻿@model IEnumerable<TrailStatusNoteOverviewServiceModel>
 @inject IStatusNoteService statusNoteService;
 
 @if (await statusNoteService.GetNotResolvedStatusNotesCountAsync() == 0)
