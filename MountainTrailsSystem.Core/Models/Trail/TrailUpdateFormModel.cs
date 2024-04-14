@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Trail
 {
     public class TrailUpdateFormModel : ITrailModel
     {

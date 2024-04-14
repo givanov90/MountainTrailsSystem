@@ -1,5 +1,5 @@
 ﻿using MountainTrailsSystem.Core.Enumerations;
-using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Models.Peak;
 
 namespace MountainTrailsSystem.Core.Contracts
 {

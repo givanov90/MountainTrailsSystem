@@ -1,4 +1,4 @@
-﻿using MountainTrailsSystem.Core.Models;
+﻿using MountainTrailsSystem.Core.Models.Trail;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 
 namespace MountainTrailsSystem.Core.Contracts

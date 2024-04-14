@@ -1,10 +1,13 @@
-﻿using MountainTrailsSystem.Infrastructure.Attributes;
+﻿using MountainTrailsSystem.Core.Models.Mountain;
+using MountainTrailsSystem.Core.Models.Peak;
+using MountainTrailsSystem.Core.Models.Region;
+using MountainTrailsSystem.Infrastructure.Attributes;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Trail
 {
     public class CreateTrailFormModel
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
-using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Models.StatusNote;
 
 namespace MountainTrailsSystem.Controllers
 {

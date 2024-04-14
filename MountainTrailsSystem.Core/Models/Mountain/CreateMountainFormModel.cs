@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MountainTrailsSystem.Core.Models.Region;
+using System.ComponentModel.DataAnnotations;
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Mountain
 {
     public class CreateMountainFormModel
     {

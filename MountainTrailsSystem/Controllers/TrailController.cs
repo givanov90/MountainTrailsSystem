@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
-using MountainTrailsSystem.Core.Models;
 using MountainTrailsSystem.Core.Extensions;
 using MountainTrailsSystem.Infrastructure.Data.Models;
+using MountainTrailsSystem.Core.Models.Trail;
 
 namespace MountainTrailsSystem.Controllers
 {

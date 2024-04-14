@@ -1,6 +1,6 @@
-﻿namespace MountainTrailsSystem.Core.Models
+﻿namespace MountainTrailsSystem.Core.Models.Peak
 {
-    public class PeakServiceModel
+    public class FindPeakViewModel
     {
         public int PeakId { get; set; }
 

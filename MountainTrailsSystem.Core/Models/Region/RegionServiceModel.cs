@@ -1,4 +1,4 @@
-﻿namespace MountainTrailsSystem.Core.Models
+﻿namespace MountainTrailsSystem.Core.Models.Region
 {
     public class RegionServiceModel
     {

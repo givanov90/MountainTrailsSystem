@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Trail
 {
     public class AllTrailsQueryModel
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Core.Extensions;
-using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Models.Trail;
 
 namespace MountainTrailsSystem.Areas.Admin.Controllers
 {

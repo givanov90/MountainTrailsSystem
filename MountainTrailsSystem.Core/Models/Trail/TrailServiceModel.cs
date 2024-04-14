@@ -1,6 +1,6 @@
 ﻿using MountainTrailsSystem.Core.Contracts;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Trail
 {
     public class TrailServiceModel : ITrailModel
     {

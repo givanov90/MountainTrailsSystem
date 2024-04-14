@@ -1,6 +1,6 @@
 ﻿using MountainTrailsSystem.Core.Contracts;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Peak
 {
     public class PeakOverviewServiceModel : IPeakModel
     {

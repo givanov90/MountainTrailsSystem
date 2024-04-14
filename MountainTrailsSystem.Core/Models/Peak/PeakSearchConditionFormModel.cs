@@ -2,7 +2,7 @@
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Peak
 {
     public class PeakSearchConditionFormModel
     {

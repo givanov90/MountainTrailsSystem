@@ -1,7 +1,7 @@
 ﻿using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Trail
 {
     public class TrailOverviewServiceModel : ITrailModel
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Core.Enumerations;
-using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Models.Peak;
 using MountainTrailsSystem.Infrastructure.Data;
 using MountainTrailsSystem.Infrastructure.Data.Models;
 

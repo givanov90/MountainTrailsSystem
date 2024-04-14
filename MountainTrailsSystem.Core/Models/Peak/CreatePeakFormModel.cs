@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MountainTrailsSystem.Core.Models.Mountain;
+using System.ComponentModel.DataAnnotations;
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
 using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Peak
 {
     public class CreatePeakFormModel
     {
         [Required(ErrorMessage = RequiredErrorMessage)]
-        [StringLength(PeakNameMaximumLength, 
+        [StringLength(PeakNameMaximumLength,
             MinimumLength = PeakNameMinimumLength,
             ErrorMessage = FieldLengthErrorMessage)]
         public string Name { get; set; } = string.Empty;

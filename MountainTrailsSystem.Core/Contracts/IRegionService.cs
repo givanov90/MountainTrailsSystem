@@ -1,4 +1,4 @@
-﻿using MountainTrailsSystem.Core.Models;
+﻿using MountainTrailsSystem.Core.Models.Region;
 
 namespace MountainTrailsSystem.Core.Contracts
 {

@@ -2,7 +2,7 @@
 using MountainTrailsSystem.Core.Enumerations;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 
-namespace MountainTrailsSystem.Core.Models
+namespace MountainTrailsSystem.Core.Models.Peak
 {
     public class TrailByPeakServiceModel : ITrailModel
     {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Core.Enumerations;
 using MountainTrailsSystem.Core.Extensions;
-using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Models.Peak;
 using MountainTrailsSystem.Infrastructure.Data.Models;
 
 namespace MountainTrailsSystem.Controllers
