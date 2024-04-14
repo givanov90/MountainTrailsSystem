@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Core.Models;
+using MountainTrailsSystem.Core.Extensions;
 using MountainTrailsSystem.Infrastructure.Data.Models;
 
 namespace MountainTrailsSystem.Controllers
@@ -36,7 +37,7 @@ namespace MountainTrailsSystem.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, string information)
         {
             if (!await trailService.TrailExistsAsync(id))
             {
@@ -44,6 +45,11 @@ namespace MountainTrailsSystem.Controllers
             }
 
             var model = await trailService.TrailDetailsByIdAsync(id);
+
+            if (information != model.GetTrailDetails())
+            {
+                return BadRequest();
+            }
 
             return View(model);
         }

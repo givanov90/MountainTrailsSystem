@@ -1,9 +1,10 @@
-﻿using MountainTrailsSystem.Core.Enumerations;
+﻿using MountainTrailsSystem.Core.Contracts;
+using MountainTrailsSystem.Core.Enumerations;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 
 namespace MountainTrailsSystem.Core.Models
 {
-    public class TrailByPeakServiceModel
+    public class TrailByPeakServiceModel : ITrailModel
     {
         public int TrailId { get; set; }
         public string Name { get; set; } = string.Empty;

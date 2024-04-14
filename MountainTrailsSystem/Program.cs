@@ -59,6 +59,18 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
+        name: "Trail Details",
+        pattern: "/Trail/Details/{id}/{information}",
+        defaults: new { Controller = "Trail", Action = "Details" }
+    );
+
+    endpoints.MapControllerRoute(
+    name: "Peak Details",
+    pattern: "/Peak/Details/{id}/{information}",
+    defaults: new { Controller = "Peak", Action = "Details" }
+);
+
+    endpoints.MapControllerRoute(
       name: "areas",
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );

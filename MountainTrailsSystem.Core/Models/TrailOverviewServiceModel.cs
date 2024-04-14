@@ -1,8 +1,9 @@
-﻿using MountainTrailsSystem.Infrastructure.Enumerations;
+﻿using MountainTrailsSystem.Core.Contracts;
+using MountainTrailsSystem.Infrastructure.Enumerations;
 
 namespace MountainTrailsSystem.Core.Models
 {
-    public class TrailOverviewServiceModel
+    public class TrailOverviewServiceModel : ITrailModel
     {
         public int TrailId { get; set; }
 

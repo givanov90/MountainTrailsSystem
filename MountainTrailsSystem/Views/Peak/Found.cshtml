@@ -1,4 +1,5 @@
 ﻿@using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Core.Extensions
 @model IEnumerable<PeakOverviewServiceModel>
 
 @if (Model.Count() == 0)
@@ -23,7 +24,7 @@ else{
             <h6>Mountain: <b>@peak.Mountain</b></h6>
             <br />
             <a asp-area="" asp-controller="Peak" asp-action="Details" asp-route-id="@peak.PeakId"
-               asp-route-information="" class="btn btn-success">Details</a>
+               asp-route-information="@peak.GetPeakDetails()" class="btn btn-success">Details</a>
         </div>
     </div>
 </div>

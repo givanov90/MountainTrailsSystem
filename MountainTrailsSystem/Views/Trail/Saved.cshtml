@@ -1,4 +1,5 @@
 ﻿@using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Core.Extensions
 @model IEnumerable<TrailOverviewServiceModel>
 
 @{
@@ -20,7 +21,7 @@
             <h6>Difficulty level: <b>@trail.DifficultyLevel</b></h6>
             <br />
             <a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@trail.TrailId"
-               asp-route-information="" class="btn btn-success">Details</a>
+               asp-route-information="@trail.GetTrailDetails()" class="btn btn-success">Details</a>
         </div>
     </div>
 </div>

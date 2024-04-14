@@ -35,6 +35,7 @@ namespace MountainTrailsSystem.Areas.Admin.Controllers
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 
+
         [HttpPost]
         public async Task<IActionResult> ResolveUpdate(int id)
         {
@@ -51,7 +52,7 @@ namespace MountainTrailsSystem.Areas.Admin.Controllers
         }
 
 
-
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var model = await statusNoteService.AllStatusNotesAsListAsync();

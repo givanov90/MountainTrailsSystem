@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MountainTrailsSystem.Core.Contracts;
+using MountainTrailsSystem.Core.Extensions;
 using MountainTrailsSystem.Core.Models;
 
 namespace MountainTrailsSystem.Areas.Admin.Controllers
@@ -46,7 +47,7 @@ namespace MountainTrailsSystem.Areas.Admin.Controllers
 
             await trailService.UpdateAsync(id, model);
 
-            return RedirectToAction("Details", new { id, area = "" });
+            return RedirectToAction("Details", new { id, information = model.GetTrailDetails(), area = "" });
         }
 
         [HttpGet]

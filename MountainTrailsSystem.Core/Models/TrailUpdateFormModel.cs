@@ -1,4 +1,5 @@
-﻿using MountainTrailsSystem.Infrastructure.Attributes;
+﻿using MountainTrailsSystem.Core.Contracts;
+using MountainTrailsSystem.Infrastructure.Attributes;
 using MountainTrailsSystem.Infrastructure.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using static MountainTrailsSystem.Infrastructure.Constants.DataConstants;
@@ -6,7 +7,7 @@ using static MountainTrailsSystem.Infrastructure.Constants.MessageConstants;
 
 namespace MountainTrailsSystem.Core.Models
 {
-    public class TrailUpdateFormModel
+    public class TrailUpdateFormModel : ITrailModel
     {
         [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(TrailNameMaximumLength,

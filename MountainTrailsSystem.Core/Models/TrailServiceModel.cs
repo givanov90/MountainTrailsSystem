@@ -1,6 +1,8 @@
-﻿namespace MountainTrailsSystem.Core.Models
+﻿using MountainTrailsSystem.Core.Contracts;
+
+namespace MountainTrailsSystem.Core.Models
 {
-    public class TrailServiceModel
+    public class TrailServiceModel : ITrailModel
     {
         public int TrailId { get; set; }
 

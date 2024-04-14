@@ -1,4 +1,5 @@
 ﻿@using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Core.Extensions
 @model PeakOverviewServiceModel
 
 <div class="col-md-4">
@@ -10,7 +11,7 @@
             <h6>Mountain: <b>@Model.Mountain</b></h6>
             <br />
             <a asp-area="" asp-controller="Peak" asp-action="Details" asp-route-id="@Model.PeakId"
-               asp-route-information="" class="btn btn-success">Details</a>
+               asp-route-information="@Model.GetPeakDetails()" class="btn btn-success">Details</a>
         </div>
     </div>
 </div>

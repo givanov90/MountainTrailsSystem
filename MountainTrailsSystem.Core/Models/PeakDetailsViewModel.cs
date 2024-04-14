@@ -1,6 +1,8 @@
-﻿namespace MountainTrailsSystem.Core.Models
+﻿using MountainTrailsSystem.Core.Contracts;
+
+namespace MountainTrailsSystem.Core.Models
 {
-    public class PeakDetailsViewModel
+    public class PeakDetailsViewModel : IPeakModel
     {
         public int PeakId { get; set; }
 

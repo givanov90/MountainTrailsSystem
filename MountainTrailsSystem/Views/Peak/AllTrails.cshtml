@@ -1,5 +1,6 @@
 ﻿@using MountainTrailsSystem.Core.Enumerations
 @using MountainTrailsSystem.Core.Models
+@using MountainTrailsSystem.Core.Extensions
 @model IEnumerable<TrailByPeakServiceModel>
 
 <hr />
@@ -44,7 +45,7 @@
                 <td>@trail.Distance.ToString("0.###") km</td>
                 <td>@trail.ElevationGain m</td>
                 <td><a asp-area="" asp-controller="Trail" asp-action="Details" asp-route-id="@trail.TrailId"
-               asp-route-information="" class="btn btn-success">Details</a></td>
+               asp-route-information="@trail.GetTrailDetails()" class="btn btn-success">Details</a></td>
             </tr>
         }
     </tbody>
