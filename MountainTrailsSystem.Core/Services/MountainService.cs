@@ -3,7 +3,6 @@ using MountainTrailsSystem.Core.Contracts;
 using MountainTrailsSystem.Core.Models.Mountain;
 using MountainTrailsSystem.Infrastructure.Data;
 using MountainTrailsSystem.Infrastructure.Data.Models;
-using System.Linq;
 
 namespace MountainTrailsSystem.Core.Services
 {
