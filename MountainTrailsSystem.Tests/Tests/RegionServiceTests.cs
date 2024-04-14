@@ -62,7 +62,6 @@ namespace MountainTrailsSystem.Tests.Tests
         }
 
         [OneTimeTearDown]
-
         public void TearDownBase()
             => data.Dispose();
     }
