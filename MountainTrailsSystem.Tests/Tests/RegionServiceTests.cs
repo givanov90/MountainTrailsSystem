@@ -18,7 +18,7 @@ namespace MountainTrailsSystem.Tests.Tests
         {
             var regions = await regionService.AllRegionsAsync();
 
-            int expectedCount = 6;
+            int expectedCount = data.Regions.Count();
 
             Assert.That(regions.Count().Equals(expectedCount));
         }

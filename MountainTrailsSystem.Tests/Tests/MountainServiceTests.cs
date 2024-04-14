@@ -19,7 +19,7 @@ namespace MountainTrailsSystem.Tests.Tests
         {
             var mountains = await mountainService.AllMountainsAsync();
 
-            int expectedCount = 4;
+            int expectedCount = data.Mountains.Count();
 
             Assert.That(mountains.Count().Equals(expectedCount));
         }
