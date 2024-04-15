@@ -117,7 +117,7 @@ namespace MountainTrailsSystem.Core.Services
                 string normalizedCondition = condition.ToLower();
 
                 return await data.Peaks
-                    .Where(p => p.Name.Contains(normalizedCondition))
+                    .Where(p => p.Name.ToLower().Contains(normalizedCondition))
                     .Select(p => new PeakOverviewServiceModel
                     {
                         PeakId = p.PeakId,
