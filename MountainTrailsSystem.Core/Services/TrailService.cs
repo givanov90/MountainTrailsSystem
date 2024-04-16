@@ -100,7 +100,6 @@ namespace MountainTrailsSystem.Core.Services
                 .AnyAsync(t => t.TrailId == id);
         }
 
-
         public async Task UpdateAsync(int trailId, TrailUpdateFormModel model)
         {
             var trail = await data.Trails
