@@ -4,6 +4,7 @@ using MountainTrailsSystem.Core.Services;
 
 namespace MountainTrailsSystem.Tests.Tests
 {
+    [TestFixture]
     public class StatusNoteServiceTests : UnitTestsBase
     {
         private IStatusNoteService statusNoteService;
