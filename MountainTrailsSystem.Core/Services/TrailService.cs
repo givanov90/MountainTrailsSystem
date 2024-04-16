@@ -347,7 +347,7 @@ namespace MountainTrailsSystem.Core.Services
                     Where(t => t.DifficultyLevel == difficultyLevel);
             }
 
-            if (duration != null)
+            if (duration != null  && duration < 24)
             {
                 int hours = (int)duration;
                 int minutes = (int)((duration - hours) * 60);
